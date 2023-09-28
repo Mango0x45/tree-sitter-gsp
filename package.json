@@ -1,0 +1,22 @@
+{
+  "name": "tree-sitter-gsp",
+  "version": "1.0.0",
+  "description": "A tree-sitter parser for gsp",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.sr.ht/~mango/tree-sitter-gsp.git"
+  },
+  "author": "Thomas Voss",
+  "license": "0BSD",
+  "bugs": {
+    "url": "https://todo.sr.ht/~mango/tree-sitter-gsp"
+  },
+  "homepage": "https://git.sr.ht/~mango/tree-sitter-gsp#readme",
+  "dependencies": {
+    "nan": "^2.18.0"
+  }
+}

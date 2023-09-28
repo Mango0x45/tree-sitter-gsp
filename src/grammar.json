@@ -1,0 +1,210 @@
+{
+  "name": "gsp",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "node"
+      }
+    },
+    "node": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ">"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "node_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "attribute_list"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "node_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "node_body": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "node"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "text_node"
+        }
+      ]
+    },
+    "node_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z:_\\u{000C0}-\\u{000D6}\\u{000D8}-\\u{000F6}\\u{000F8}-\\u{002FF}\\u{00370}-\\u{0037D}\\u{0037F}-\\u{01FFF}\\u{0200C}-\\u{0200D}\\u{02070}-\\u{0218F}\\u{02C00}-\\u{02FEF}\\u{03001}-\\u{0D7FF}\\u{0F900}-\\u{0FDCF}\\u{0FDF0}-\\u{0FFFD}\\u{10000}-\\u{EFFFF}][a-zA-Z0-9:_\\-.·\\u{00300}-\\u{0036F}\\u{0203F}-\\u{02040}\\u{000C0}-\\u{000D6}\\u{000D8}-\\u{000F6}\\u{000F8}-\\u{002FF}\\u{00370}-\\u{0037D}\\u{0037F}-\\u{01FFF}\\u{0200C}-\\u{0200D}\\u{02070}-\\u{0218F}\\u{02C00}-\\u{02FEF}\\u{03001}-\\u{0D7FF}\\u{0F900}-\\u{0FDCF}\\u{0FDF0}-\\u{0FFFD}\\u{10000}-\\u{EFFFF}]*"
+    },
+    "text_node": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "-"
+            },
+            {
+              "type": "STRING",
+              "value": "="
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "literal_text"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "@"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "node"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "literal_text": {
+      "type": "PATTERN",
+      "value": "(\\\\[@}\\\\]|[^@}])+"
+    },
+    "attribute_list": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "attribute"
+      }
+    },
+    "attribute": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "class_shorthand"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "id_shorthand"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "attribute_name"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "attribute_value"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "class_shorthand": {
+      "type": "PATTERN",
+      "value": "\\.[a-zA-Z0-9_-]+"
+    },
+    "id_shorthand": {
+      "type": "PATTERN",
+      "value": "#[a-zA-Z0-9_-]+"
+    },
+    "attribute_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_-]+"
+    },
+    "attribute_value": {
+      "type": "PATTERN",
+      "value": "\"(\\\\.|[^\"\\\\])*\""
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+
