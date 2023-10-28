@@ -43,8 +43,8 @@ module.exports = grammar({
 			),
 		),
 
-		class_shorthand: $ => /\.[a-zA-Z0-9_-]+/,
-		id_shorthand: $ => /#[a-zA-Z0-9_-]+/,
+		class_shorthand: $ => /\.[^\s]+/,
+		id_shorthand: $ => /#[^\s]+/,
 
 		attribute_name: $ => /[a-zA-Z0-9_-]+/,
 		attribute_value: $ => /"(\\.|[^"\\])*"/,
