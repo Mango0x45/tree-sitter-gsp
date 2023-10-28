@@ -180,11 +180,11 @@
     },
     "class_shorthand": {
       "type": "PATTERN",
-      "value": "\\.[^\\s]+"
+      "value": "\\.[^\\p{White_Space}]+"
     },
     "id_shorthand": {
       "type": "PATTERN",
-      "value": "#[^\\s]+"
+      "value": "#[^\\p{White_Space}]+"
     },
     "attribute_name": {
       "type": "PATTERN",
@@ -193,12 +193,16 @@
     "attribute_value": {
       "type": "PATTERN",
       "value": "\"(\\\\.|[^\"\\\\])*\""
+    },
+    "_S": {
+      "type": "PATTERN",
+      "value": "\\p{White_Space}*"
     }
   },
   "extras": [
     {
-      "type": "PATTERN",
-      "value": "\\s"
+      "type": "SYMBOL",
+      "name": "_S"
     }
   ],
   "conflicts": [],

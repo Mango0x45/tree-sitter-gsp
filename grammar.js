@@ -1,6 +1,6 @@
 module.exports = grammar({
 	name: 'gsp',
-
+	extras: $ => [$._S],
 	rules: {
 		source_file: $ => repeat($.node),
 
@@ -43,10 +43,12 @@ module.exports = grammar({
 			),
 		),
 
-		class_shorthand: $ => /\.[^\s]+/,
-		id_shorthand: $ => /#[^\s]+/,
+		class_shorthand: $ => /\.[^\p{White_Space}]+/u,
+		id_shorthand: $ => /#[^\p{White_Space}]+/u,
 
 		attribute_name: $ => /[a-zA-Z0-9_-]+/,
 		attribute_value: $ => /"(\\.|[^"\\])*"/,
+
+		_S: $ => /\p{White_Space}*/u,
 	},
 })
