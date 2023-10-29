@@ -196,7 +196,7 @@
     },
     "_S": {
       "type": "PATTERN",
-      "value": "\\p{White_Space}*"
+      "value": "\\p{White_Space}+"
     }
   },
   "extras": [

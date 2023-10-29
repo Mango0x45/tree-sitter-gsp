@@ -49,6 +49,6 @@ module.exports = grammar({
 		attribute_name: $ => /[a-zA-Z0-9_-]+/,
 		attribute_value: $ => /"(\\.|[^"\\])*"/,
 
-		_S: $ => /\p{White_Space}*/u,
+		_S: $ => /\p{White_Space}+/u,
 	},
 })
