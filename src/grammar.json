@@ -180,11 +180,11 @@
     },
     "class_shorthand": {
       "type": "PATTERN",
-      "value": "\\.[^\\p{White_Space}]+"
+      "value": "\\.\\P{White_Space}+"
     },
     "id_shorthand": {
       "type": "PATTERN",
-      "value": "#[^\\p{White_Space}]+"
+      "value": "#\\P{White_Space}+"
     },
     "attribute_name": {
       "type": "PATTERN",

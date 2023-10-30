@@ -43,8 +43,8 @@ module.exports = grammar({
 			),
 		),
 
-		class_shorthand: $ => /\.[^\p{White_Space}]+/u,
-		id_shorthand: $ => /#[^\p{White_Space}]+/u,
+		class_shorthand: $ => /\.\P{White_Space}+/u,
+		id_shorthand: $ => /#\P{White_Space}+/u,
 
 		attribute_name: $ => /[a-zA-Z0-9_-]+/,
 		attribute_value: $ => /"(\\.|[^"\\])*"/,
