@@ -70,14 +70,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "node",
           "named": true
         },
         {
-          "type": "text_node",
+          "type": "text",
           "named": true
         }
       ]
@@ -99,12 +99,12 @@
     }
   },
   {
-    "type": "text_node",
+    "type": "text",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "literal_text",
