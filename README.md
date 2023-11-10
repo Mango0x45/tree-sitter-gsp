@@ -8,7 +8,9 @@ indentation, etc., as well as automatic filetype detection for Neovim.
 ## Neovim Support
 
 If you would like to use this parser in Neovim, the following configuration is
-required.
+required.  Also good to note is that the Neovim plugin adds two additional text
+objects, `@node` and `@text`.  The former matches on entire nodes, while the
+latter matches on the text within a `{-…}` or `{=…}` construction.
 
 ### Plugin Installation
 
