@@ -7,10 +7,18 @@ module.exports = grammar({
 		document: $ => repeat($._toplevel),
 		_toplevel: $ => choice($.comment, $.node),
 
-		comment: $ => seq('/', $.node),
-		node: $ => seq($.node_name, optional($.attrs), $.node_body),
+		comment: $ => seq(
+			'/',
+			optional(field('name', $.ident)),
+			optional(field('attrs', $.attr_list)),
+			field('body', $.node_body),
+		),
+		node: $ => seq(
+			field('name', $.ident),
+			optional(field('attrs', $.attr_list)),
+			field('body', $.node_body),
+		),
 
-		node_name: $ => IDENT,
 		node_body: $ => seq(
 			'{',
 			choice(
@@ -20,19 +28,25 @@ module.exports = grammar({
 			'}',
 		),
 
-		attrs: $ => repeat1(choice(
+		attr_list: $ => repeat1(choice(
 			$.attr,
 			$.id_attr,
 			$.class_attr,
 		)),
 
-		attr: $ => seq(IDENT, '=', /"(\\["\\]|[^"\\])+"/),
-		id_attr: $ => seq('#', token.immediate(IDENT)),
-		class_attr: $ => seq('.', token.immediate(IDENT)),
+		attr: $ => seq(
+			field('name', $.ident),
+			'=',
+			field('value', $.string)
+		),
+		id_attr: $ => seq('#', alias(token.immediate(IDENT), $.ident)),
+		class_attr: $ => seq('.', alias(token.immediate(IDENT), $.ident)),
 
 		text: $ => repeat1(choice(
 			/(\\[@}\\]|[^@}\\])+/,
 			seq('@', $._toplevel),
 		)),
+		ident: $ => IDENT,
+		string: $ => /"(\\["\\]|[^"\\])+"/,
 	},
 })

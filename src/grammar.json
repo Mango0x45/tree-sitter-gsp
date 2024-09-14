@@ -29,24 +29,15 @@
           "value": "/"
         },
         {
-          "type": "SYMBOL",
-          "name": "node"
-        }
-      ]
-    },
-    "node": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "node_name"
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "attrs"
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "ident"
+              }
             },
             {
               "type": "BLANK"
@@ -54,15 +45,67 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "node_body"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "attrs",
+              "content": {
+                "type": "SYMBOL",
+                "name": "attr_list"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "node_body"
+          }
         }
       ]
     },
-    "node_name": {
-      "type": "PATTERN",
-      "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
-      "flags": "u"
+    "node": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "ident"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "attrs",
+              "content": {
+                "type": "SYMBOL",
+                "name": "attr_list"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "node_body"
+          }
+        }
+      ]
     },
     "node_body": {
       "type": "SEQ",
@@ -119,7 +162,7 @@
         }
       ]
     },
-    "attrs": {
+    "attr_list": {
       "type": "REPEAT1",
       "content": {
         "type": "CHOICE",
@@ -143,17 +186,24 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
-          "flags": "u"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "ident"
+          }
         },
         {
           "type": "STRING",
           "value": "="
         },
         {
-          "type": "PATTERN",
-          "value": "\"(\\\\[\"\\\\]|[^\"\\\\])+\""
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
         }
       ]
     },
@@ -165,12 +215,17 @@
           "value": "#"
         },
         {
-          "type": "IMMEDIATE_TOKEN",
+          "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
-            "flags": "u"
-          }
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
+              "flags": "u"
+            }
+          },
+          "named": true,
+          "value": "ident"
         }
       ]
     },
@@ -182,12 +237,17 @@
           "value": "."
         },
         {
-          "type": "IMMEDIATE_TOKEN",
+          "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
-            "flags": "u"
-          }
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
+              "flags": "u"
+            }
+          },
+          "named": true,
+          "value": "ident"
         }
       ]
     },
@@ -215,6 +275,15 @@
           }
         ]
       }
+    },
+    "ident": {
+      "type": "PATTERN",
+      "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
+      "flags": "u"
+    },
+    "string": {
+      "type": "PATTERN",
+      "value": "\"(\\\\[\"\\\\]|[^\"\\\\])+\""
     }
   },
   "extras": [

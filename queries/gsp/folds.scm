@@ -1,4 +1,5 @@
 [
+ (comment)
  (node)
- (attribute_list)
+ (attr_list)
 ] @fold

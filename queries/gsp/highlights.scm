@@ -1,12 +1,9 @@
-[">" "-" "=" "@"] @operator
+["-" "=" "@"] @operator
 ["{" "}"] @tag.delimiter
-(node_name) @tag
-[
- (attribute_name)
- (class_shorthand)
- (id_shorthand)
-] @tag.attribute
-(attribute_value) @string
+(node name: (ident) @tag)
+[(id_attr) (class_attr)] @tag.attribute
+(attr name: (ident) @tag.attribute)
+(string) @string
 (comment) @comment
 ([_] @comment
  (#has-ancestor? @comment comment))
