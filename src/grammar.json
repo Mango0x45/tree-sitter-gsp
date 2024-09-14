@@ -215,17 +215,21 @@
           "value": "#"
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "IMMEDIATE_TOKEN",
+            "type": "ALIAS",
             "content": {
-              "type": "PATTERN",
-              "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
-              "flags": "u"
-            }
-          },
-          "named": true,
-          "value": "ident"
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
+                "flags": "u"
+              }
+            },
+            "named": true,
+            "value": "ident"
+          }
         }
       ]
     },
@@ -237,17 +241,21 @@
           "value": "."
         },
         {
-          "type": "ALIAS",
+          "type": "FIELD",
+          "name": "name",
           "content": {
-            "type": "IMMEDIATE_TOKEN",
+            "type": "ALIAS",
             "content": {
-              "type": "PATTERN",
-              "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
-              "flags": "u"
-            }
-          },
-          "named": true,
-          "value": "ident"
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\p{XID_Start}[-\\p{XID_Continue}]*",
+                "flags": "u"
+              }
+            },
+            "named": true,
+            "value": "ident"
+          }
         }
       ]
     },

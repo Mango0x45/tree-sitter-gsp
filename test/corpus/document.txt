@@ -105,14 +105,14 @@ html lang="en" {
             name: (ident)
             attrs: (attr_list
               (id_attr
-                (ident)))
+                name: (ident)))
             body: (node_body
               (text)))
           (node
             name: (ident)
             attrs: (attr_list
               (class_attr
-                (ident)))
+                name: (ident)))
             body: (node_body
               (text)))
           (comment
@@ -130,11 +130,11 @@ html lang="en" {
             name: (ident)
             attrs: (attr_list
               (id_attr
-                (ident))
+                name: (ident))
               (class_attr
-                (ident))
+                name: (ident))
               (class_attr
-                (ident))
+                name: (ident))
               (attr
                 name: (ident)
                 value: (string))
@@ -151,6 +151,6 @@ html lang="en" {
                   name: (ident)
                   attrs: (attr_list
                     (id_attr
-                      (ident)))
+                      name: (ident)))
                   body: (node_body
                     (text)))))))))))

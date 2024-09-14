@@ -13,7 +13,7 @@
 #define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 4
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
-#define PRODUCTION_ID_COUNT 8
+#define PRODUCTION_ID_COUNT 9
 
 enum ts_symbol_identifiers {
   anon_sym_SLASH = 1,
@@ -226,11 +226,12 @@ static const char * const ts_field_names[] = {
 static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [1] = {.index = 0, .length = 1},
   [2] = {.index = 1, .length = 2},
-  [3] = {.index = 3, .length = 2},
-  [4] = {.index = 5, .length = 2},
-  [5] = {.index = 7, .length = 3},
-  [6] = {.index = 10, .length = 2},
-  [7] = {.index = 12, .length = 3},
+  [3] = {.index = 3, .length = 1},
+  [4] = {.index = 4, .length = 2},
+  [5] = {.index = 6, .length = 2},
+  [6] = {.index = 8, .length = 3},
+  [7] = {.index = 11, .length = 2},
+  [8] = {.index = 13, .length = 3},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -240,19 +241,21 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_body, 1},
     {field_name, 0},
   [3] =
+    {field_name, 1},
+  [4] =
     {field_body, 2},
     {field_name, 1},
-  [5] =
+  [6] =
     {field_attrs, 1},
     {field_body, 2},
-  [7] =
+  [8] =
     {field_attrs, 1},
     {field_body, 2},
     {field_name, 0},
-  [10] =
+  [11] =
     {field_name, 0},
     {field_value, 2},
-  [12] =
+  [13] =
     {field_attrs, 2},
     {field_body, 3},
     {field_name, 1},
@@ -1311,31 +1314,31 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [68] = {.entry = {.count = 1, .reusable = false}}, SHIFT(16),
   [70] = {.entry = {.count = 1, .reusable = false}}, SHIFT(28),
   [72] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_node_body, 4, 0, 0),
-  [74] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_id_attr, 2, 0, 0),
-  [76] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_class_attr, 2, 0, 0),
+  [74] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_id_attr, 2, 0, 3),
+  [76] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_class_attr, 2, 0, 3),
   [78] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_node, 2, 0, 2),
-  [80] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_comment, 3, 0, 3),
+  [80] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_comment, 3, 0, 4),
   [82] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_text_repeat1, 2, 0, 0),
   [84] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_text_repeat1, 2, 0, 0), SHIFT_REPEAT(24),
   [87] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_text_repeat1, 2, 0, 0), SHIFT_REPEAT(16),
-  [90] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_comment, 3, 0, 4),
+  [90] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_comment, 3, 0, 5),
   [92] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_node_body, 2, 0, 0),
-  [94] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_node, 3, 0, 5),
+  [94] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_node, 3, 0, 6),
   [96] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_node_body, 3, 0, 0),
   [98] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_comment, 2, 0, 1),
   [100] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_text, 1, 0, 0),
   [102] = {.entry = {.count = 1, .reusable = true}}, SHIFT(24),
-  [104] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_attr, 3, 0, 6),
-  [106] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_comment, 4, 0, 7),
-  [108] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_node, 3, 0, 5),
-  [110] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_comment, 4, 0, 7),
+  [104] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_attr, 3, 0, 7),
+  [106] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_comment, 4, 0, 8),
+  [108] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_node, 3, 0, 6),
+  [110] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_comment, 4, 0, 8),
   [112] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_node_body, 4, 0, 0),
   [114] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_text_repeat1, 2, 0, 0),
   [116] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_comment, 2, 0, 1),
   [118] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_node, 2, 0, 2),
   [120] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_node_body, 2, 0, 0),
-  [122] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_comment, 3, 0, 3),
-  [124] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_comment, 3, 0, 4),
+  [122] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_comment, 3, 0, 4),
+  [124] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_comment, 3, 0, 5),
   [126] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_node_body, 3, 0, 0),
   [128] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
   [130] = {.entry = {.count = 1, .reusable = true}}, SHIFT(19),
