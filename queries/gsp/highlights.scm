@@ -8,3 +8,5 @@
 ] @tag.attribute
 (attribute_value) @string
 (comment) @comment
+([_] @comment
+ (#has-ancestor? @comment comment))
