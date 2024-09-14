@@ -39,8 +39,10 @@ module.exports = grammar({
 			'=',
 			field('value', $.string)
 		),
-		id_attr: $ => seq('#', alias(token.immediate(IDENT), $.ident)),
-		class_attr: $ => seq('.', alias(token.immediate(IDENT), $.ident)),
+		id_attr: $ => seq('#',
+			field('name', alias(token.immediate(IDENT), $.ident))),
+		class_attr: $ => seq('.',
+			field('name', alias(token.immediate(IDENT), $.ident))),
 
 		text: $ => repeat1(choice(
 			/(\\[@}\\]|[^@}\\])+/,
