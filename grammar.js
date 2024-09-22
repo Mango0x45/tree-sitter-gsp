@@ -50,6 +50,6 @@ module.exports = grammar({
 		inline_node: $ => seq('@', $._toplevel),
 
 		ident: $ => IDENT,
-		string: $ => /"(\\["\\]|[^"\\])+"/,
+		string: $ => /"(\\["\\]|[^"\\])*"/,
 	},
 })
