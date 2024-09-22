@@ -97,7 +97,8 @@ html lang="en" {
           (node
             name: (ident)
             body: (node_body
-              (text)))))
+              (text
+                (raw_text))))))
       (node
         name: (ident)
         body: (node_body
@@ -107,25 +108,29 @@ html lang="en" {
               (id_attr
                 name: (ident)))
             body: (node_body
-              (text)))
+              (text
+                (raw_text))))
           (node
             name: (ident)
             attrs: (attr_list
               (class_attr
                 name: (ident)))
             body: (node_body
-              (text)))
+              (text
+                (raw_text))))
           (comment
             name: (ident)
             body: (node_body
               (node
                 name: (ident)
                 body: (node_body
-                  (text)))
+                  (text
+                    (raw_text))))
               (node
                 name: (ident)
                 body: (node_body
-                  (text)))))
+                  (text
+                    (raw_text))))))
           (node
             name: (ident)
             attrs: (attr_list
@@ -143,14 +148,21 @@ html lang="en" {
                 value: (string)))
             body: (node_body
               (text
-                (node
-                  name: (ident)
-                  body: (node_body
-                    (text)))
-                (node
-                  name: (ident)
-                  attrs: (attr_list
-                    (id_attr
-                      name: (ident)))
-                  body: (node_body
-                    (text)))))))))))
+                (raw_text)
+                (inline_node
+                  (node
+                    name: (ident)
+                    body: (node_body
+                      (text
+                        (raw_text)))))
+                (raw_text)
+                (inline_node
+                  (node
+                    name: (ident)
+                    attrs: (attr_list
+                      (id_attr
+                        name: (ident)))
+                    body: (node_body
+                      (text
+                        (raw_text)))))
+                (raw_text)))))))))
