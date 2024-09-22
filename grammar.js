@@ -9,8 +9,10 @@ module.exports = grammar({
 
 		comment: $ => seq(
 			'/',
-			optional(field('name', $.ident)),
-			optional(field('attrs', $.attr_list)),
+			optional(seq(
+				field('name', $.ident),
+				optional(field('attrs', $.attr_list)),
+			)),
 			field('body', $.node_body),
 		),
 		node: $ => seq(
@@ -36,8 +38,7 @@ module.exports = grammar({
 
 		attr: $ => seq(
 			field('name', $.ident),
-			'=',
-			field('value', $.string)
+			optional(seq('=', field('value', $.string))),
 		),
 		id_attr: $ => seq('#',
 			field('name', alias(token.immediate(IDENT), $.ident))),
