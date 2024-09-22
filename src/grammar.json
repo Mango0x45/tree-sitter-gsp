@@ -283,25 +283,33 @@
         "type": "CHOICE",
         "members": [
           {
-            "type": "PATTERN",
-            "value": "(\\\\[@}\\\\]|[^@}\\\\\\p{Pattern_White_Space}])((\\\\[@}\\\\]|[^@}\\\\])*(\\\\[@}\\\\]|[^@}\\\\\\p{Pattern_White_Space}]))?",
-            "flags": "u"
+            "type": "SYMBOL",
+            "name": "raw_text"
           },
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "@"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_toplevel"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "inline_node"
           }
         ]
       }
+    },
+    "raw_text": {
+      "type": "PATTERN",
+      "value": "(\\\\[@}\\\\]|[^@}\\\\\\p{Pattern_White_Space}])((\\\\[@}\\\\]|[^@}\\\\])*(\\\\[@}\\\\]|[^@}\\\\\\p{Pattern_White_Space}]))?",
+      "flags": "u"
+    },
+    "inline_node": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_toplevel"
+        }
+      ]
     },
     "ident": {
       "type": "PATTERN",

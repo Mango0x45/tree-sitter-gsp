@@ -45,10 +45,10 @@ module.exports = grammar({
 		class_attr: $ => seq('.',
 			field('name', alias(token.immediate(IDENT), $.ident))),
 
-		text: $ => repeat1(choice(
-			/(\\[@}\\]|[^@}\\\p{Pattern_White_Space}])((\\[@}\\]|[^@}\\])*(\\[@}\\]|[^@}\\\p{Pattern_White_Space}]))?/u,
-			seq('@', $._toplevel),
-		)),
+		text: $ => repeat1(choice($.raw_text, $.inline_node)),
+		raw_text: $ => /(\\[@}\\]|[^@}\\\p{Pattern_White_Space}])((\\[@}\\]|[^@}\\])*(\\[@}\\]|[^@}\\\p{Pattern_White_Space}]))?/u,
+		inline_node: $ => seq('@', $._toplevel),
+
 		ident: $ => IDENT,
 		string: $ => /"(\\["\\]|[^"\\])+"/,
 	},
