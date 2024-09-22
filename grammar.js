@@ -46,7 +46,7 @@ module.exports = grammar({
 			field('name', alias(token.immediate(IDENT), $.ident))),
 
 		text: $ => repeat1(choice(
-			/(\\[@}\\]|[^@}\\])+/,
+			/(\\[@}\\]|[^@}\\\p{Pattern_White_Space}])((\\[@}\\]|[^@}\\])*(\\[@}\\]|[^@}\\\p{Pattern_White_Space}]))?/u,
 			seq('@', $._toplevel),
 		)),
 		ident: $ => IDENT,

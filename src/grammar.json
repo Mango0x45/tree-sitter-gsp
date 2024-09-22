@@ -284,7 +284,8 @@
         "members": [
           {
             "type": "PATTERN",
-            "value": "(\\\\[@}\\\\]|[^@}\\\\])+"
+            "value": "(\\\\[@}\\\\]|[^@}\\\\\\p{Pattern_White_Space}])((\\\\[@}\\\\]|[^@}\\\\])*(\\\\[@}\\\\]|[^@}\\\\\\p{Pattern_White_Space}]))?",
+            "flags": "u"
           },
           {
             "type": "SEQ",
